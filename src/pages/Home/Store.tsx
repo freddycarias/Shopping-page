@@ -1,5 +1,9 @@
+import Header from "../../layout/Header/Header";
+
 export default function Store() {
   return (
-    <div>Store</div>
+    <>
+      <Header/>
+    </>
   )
 }
