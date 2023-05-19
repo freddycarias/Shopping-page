@@ -40,12 +40,16 @@
 
 @media only screen and (min-width:360px) and (max-width:780px) {
   .nav-main {
-    margin-top: 120px;
+    margin-top: 171px;
     background-color: #3498db;
+    
   }
+  .offcanvas.show{
+  width: 300px;
+}
   .nav-hambuger-menu{
     position: relative;
-    left: 150px;
+    left: 10px;
   }
 }
 
