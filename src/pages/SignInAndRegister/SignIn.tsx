@@ -1,33 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/SignIn.css";
-import { useState } from "react";
 
 export default function SignIn() {
-  const [name , setName] = useState("");
-  const [email, setEmail] = useState("");
-  
   const navigate = useNavigate();
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-
-    if(name === "" || email === "") {
-      alert('Please Complit the form')
-    } else {
-      navigate("/", { replace: true})
-    }
-  }
-
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value)
-  }
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
-  }
   return (
     <div className="container text-center border sign-in">
-      <form className="sign-in-form" onSubmit={handleSubmit}>
+      <form className="sign-in-form" onSubmit={() => navigate("/")}>
         <div className="row mb-3">
           <label
             htmlFor="inputEmail3"
@@ -40,8 +18,7 @@ export default function SignIn() {
               type="email"
               className="form-control email-input"
               id="inputEmail3"
-              value={name}
-              onChange={handleNameChange}
+              required
             />
           </div>
         </div>
@@ -57,8 +34,7 @@ export default function SignIn() {
               type="password"
               className="form-control password-input"
               id="inputPassword3"
-              value={email} 
-              onChange={handleEmailChange}
+              required
             />
           </div>
         </div>
@@ -68,6 +44,7 @@ export default function SignIn() {
               className="form-check-input"
               type="checkbox"
               id="gridCheck1"
+              required
             />
             <label
               className="form-check-label accept-terms-and-conditions-label"
