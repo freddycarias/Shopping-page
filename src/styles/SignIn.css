@@ -1,0 +1,47 @@
+.border{
+  height: 300px;
+}
+
+.sign-in{
+  height: 300px;
+  width: 600px; 
+  margin-top: 100px;
+}
+
+.sign-in-form{
+  margin-top: 30px;
+}
+
+.accept-terms-and-conditions-label{
+  margin-left: 5px;
+}
+
+
+.register-button{
+  margin-top: 10px;
+}
+
+@media only screen and (min-width:360px) and (max-width:780px)  {
+  .sign-in{
+    height: 400px;
+    width: 350px; 
+  }
+
+  .email-label, .password-label{
+    position: relative;
+    font-size: 30px;
+  }
+
+  .email-input, .password-input{
+    width: 330px;
+  }
+
+  .accept-terms-conditions{
+    position: relative;
+    font-size: 20px;
+    right: 10px;
+  }
+  .accept-terms-and-conditions-label{
+    margin-left: 5px;
+  }
+}

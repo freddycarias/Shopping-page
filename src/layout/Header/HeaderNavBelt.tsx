@@ -1,7 +1,9 @@
 import AllDifferentProductTypes from "./AllDifferentProductTypes";
+import { useNavigate } from "react-router-dom";
 import '../../styles/HeaderNavBelt.css';
 
 export default function HeaderNavBelt() {
+  const navigate = useNavigate();
   return (
     <div className="nav-belt">
         <nav className="navbar fixed-top">
@@ -47,7 +49,7 @@ export default function HeaderNavBelt() {
               </form>
             </div>
             <div className="nav-right">
-              <button className="account-button">My account</button>
+              <button className="account-button" onClick={() => navigate("/signin")}>My account</button>
               <a className="navbar-brand" href="/">
                 <img
                   className="shopping-cart"
