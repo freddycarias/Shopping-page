@@ -1,0 +1,65 @@
+.company-logo-img {
+  width: 100px;
+  height: 55px;
+  background-image: url(../assets/CompanyLogo/Company-Logo-2.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  left: 670px;
+  top: 80px;
+}
+
+.register-form{
+  margin-top: 5px;
+}
+
+.border-register{
+  border: #dee2e6  solid;
+  margin-top: 100px;
+  height: 300px;
+}
+
+.register-email{
+  left: 325px;
+}
+
+
+@media only screen and (min-width:360px) and (max-width:780px)  {
+  .company-logo-img {
+    left: 150px;
+  }
+
+  .register-form{
+   font-size: 25px;
+  }
+
+  .border-register{
+    border: #dee2e6  solid;
+    margin-top: 100px;
+    height: 650px;
+    width: 350px;
+  }
+
+  .register-email{
+    left: 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .company-logo-img {
+    left: 455px;
+  }
+  .register-form{
+    font-size: 20px;
+   }
+
+  .border-register{
+    width: 800px;
+    height: 350px;
+  }
+
+  .register-email{
+    left: 220px;
+  }
+
+}
