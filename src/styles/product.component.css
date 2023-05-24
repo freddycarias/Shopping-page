@@ -1,0 +1,12 @@
+.product {
+  max-width: 40%;
+  height: auto;
+  margin: 20px;
+  padding: 35px;
+  display: inline-block;
+  margin: auto;
+}
+
+.product-img {
+  width: 287px
+}
