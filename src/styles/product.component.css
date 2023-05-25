@@ -10,3 +10,16 @@
 .product-img {
   width: 287px
 }
+
+@media only screen and (min-width:360px) and (max-width:780px) {
+  .product {
+    margin: 20px;
+    padding: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .product {
+    padding: 24px;
+  }
+}
