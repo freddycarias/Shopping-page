@@ -11,9 +11,16 @@
   width: 287px
 }
 
-@media only screen and (min-width:360px) and (max-width:780px) {
+@media only screen and (min-width:360px) and (max-width:400px) {
   .product {
     margin: 20px;
+    padding: 30px;
+  }
+}
+
+@media only screen and (min-width:405px) and (max-width:500px) {
+  .product {
+    margin: 30px;
     padding: 30px;
   }
 }
