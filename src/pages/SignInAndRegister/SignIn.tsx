@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  User,
 } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 
@@ -12,7 +13,7 @@ import "../../styles/SignIn.css";
 export default function SignIn() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [loginError, setLoginError] = useState(null);
 
@@ -38,7 +39,7 @@ export default function SignIn() {
       console.log(loggedInUser);
 
       navigate("/"); // Redirige al usuario a la página de inicio ("/")
-    } catch (error) {
+    } catch (error:any) {
       setLoginError(error.message);
     }
   };
@@ -46,7 +47,7 @@ export default function SignIn() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.message);
     }
   };
@@ -116,7 +117,7 @@ export default function SignIn() {
         <h4>User Logged In:</h4>
         {user ? <p>{user.email}</p> : <p>No user logged in</p>}
 
-        <button onClick={handleLogout}>Sign Out</button>
+        <button onClick={handleLogout} className="btn btn-danger">Sign Out</button>
 
         <div className="register-button">
           <button
