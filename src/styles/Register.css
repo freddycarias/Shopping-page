@@ -15,7 +15,7 @@
 .border-register{
   border: #dee2e6  solid;
   margin-top: 100px;
-  height: 200px;
+  height: 250px;
   width: 600px;
 }
 
@@ -51,7 +51,7 @@
 
   .border-register{
     width: 800px;
-    height: 200px;
+    height: 250px;
   }
 
   .register-email{

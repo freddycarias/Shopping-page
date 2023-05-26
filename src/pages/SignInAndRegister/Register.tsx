@@ -8,21 +8,28 @@ export default function Register() {
   const navigate = useNavigate();
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
 
-  const handleRegister = async () => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      const newUser = userCredential.user;
-      console.log(newUser);
-      navigate("/");
-    } catch (error: any) {
-      console.log(error.message);
+const handleRegister = async () => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      registerEmail,
+      registerPassword
+    );
+    const newUser = userCredential.user;
+    console.log(newUser);
+    navigate("/");
+  } catch (error: any) {
+    console.log(error.message);
+    if (error.code === "auth/invalid-email") {
+      setLoginError("Correo Invalido");
+    } else {
+      setLoginError("");
     }
-  };
+  }
+};
+
   return (
     <>
       <div className="company-logo-in-register">
@@ -71,9 +78,11 @@ export default function Register() {
             </div>
           </div>
         </form>
+        {loginError && <p>{loginError}</p>}
         <button onClick={handleRegister} className="btn btn-primary">
           Create User
         </button>
+
       </div>
     </>
   );
