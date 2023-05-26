@@ -1,6 +1,28 @@
+import { auth } from "../../config/firebase-config";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import "../../styles/Register.css";
 
 export default function Register() {
+  const navigate = useNavigate();
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+
+  const handleRegister = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      const newUser = userCredential.user;
+      console.log(newUser);
+      navigate("/");
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
   return (
     <>
       <div className="company-logo-in-register">
@@ -9,74 +31,49 @@ export default function Register() {
         </a>
       </div>
       <div className="container text-center border-register">
-        <form className="row g-3 needs-validation was-validated register-form">
-          <div className="col-md-4 position-relative">
-            <label htmlFor="validationTooltip01" className="form-label">
-              First name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="validationTooltip01"
-              required
-            />
-            <div className="invalid-feedback">please provide a name!</div>
-          </div>
-          <div className="col-md-4 position-relative">
-            <label htmlFor="validationTooltip02" className="form-label">
-              Last name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="validationTooltip02"
-              required
-            />
-            <div className="invalid-feedback">please provide a last name</div>
-          </div>
-          <div className="col-md-4 position-relative">
-            <label htmlFor="validationTooltipUsername" className="form-label">
-              Username
-            </label>
-            <div className="input-group has-validation">
-              <span
-                className="input-group-text"
-                id="validationTooltipUsernamePrepend"
-              >
-                @
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                id="validationTooltipUsername"
-                aria-describedby="validationTooltipUsernamePrepend"
-                required={true}
-              />
-              <div className="invalid-feedback">
-                Please choose a unique and valid username.
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 position-relative register-email">
-            <label htmlFor="validationTooltip03" className="form-label">
+        <form className="register-form">
+          <div className="row mb-3">
+            <label
+              htmlFor="inputEmail3"
+              className="col-sm-2 col-form-label email-label"
+            >
               Email
             </label>
-            <input
-              type="email"
-              className="form-control"
-              id="validationTooltip03"
-              required
-            />
-            <div className="invalid-feedback">
-              Please provide a valid email.
+            <div className="col-sm-10">
+              <input
+                type="email"
+                className="form-control email-input"
+                id="inputEmail3"
+                placeholder="Email..."
+                required
+                value={registerEmail}
+                onChange={(event) => setRegisterEmail(event.target.value)}
+              />
             </div>
           </div>
-          <div className="col-12">
-            <button className="btn btn-primary" type="submit">
-              Submit form
-            </button>
+          <div className="row mb-3">
+            <label
+              htmlFor="inputPassword3"
+              className="col-sm-2 col-form-label password-label"
+            >
+              Password
+            </label>
+            <div className="col-sm-10">
+              <input
+                type="password"
+                className="form-control password-input"
+                id="inputPassword3"
+                placeholder="Password..."
+                required
+                value={registerPassword}
+                onChange={(event) => setRegisterPassword(event.target.value)}
+              />
+            </div>
           </div>
         </form>
+        <button onClick={handleRegister} className="btn btn-primary">
+          Create User
+        </button>
       </div>
     </>
   );
