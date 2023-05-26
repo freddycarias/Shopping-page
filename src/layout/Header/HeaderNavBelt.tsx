@@ -49,7 +49,7 @@ export default function HeaderNavBelt() {
               </form>
             </div>
             <div className="nav-right">
-              <button className="account-button" onClick={() => navigate("/signin")}>My account</button>
+              <button className="account-button" onClick={() => navigate("/signin")}>Hi, Sign in</button>
               <a className="navbar-brand" href="/">
                 <img
                   className="shopping-cart"
