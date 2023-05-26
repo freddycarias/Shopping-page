@@ -8,19 +8,15 @@
   left: 670px;
   top: 80px;
 }
-
 .register-form{
-  margin-top: 5px;
+  margin-top: 30px;
 }
 
 .border-register{
   border: #dee2e6  solid;
   margin-top: 100px;
-  height: 300px;
-}
-
-.register-email{
-  left: 325px;
+  height: 200px;
+  width: 600px;
 }
 
 
@@ -36,7 +32,7 @@
   .border-register{
     border: #dee2e6  solid;
     margin-top: 100px;
-    height: 650px;
+    height: 300px;
     width: 350px;
   }
 
@@ -55,7 +51,7 @@
 
   .border-register{
     width: 800px;
-    height: 350px;
+    height: 200px;
   }
 
   .register-email{
