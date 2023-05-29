@@ -1,0 +1,17 @@
+.title-hmenu-canvas {
+  text-decoration: none;
+  color: black
+}
+.routes-offcanvas-body {
+  padding: 10px 0 0 10px;
+  text-decoration: none;
+  color: black
+}
+
+.background-offcanvas-body:hover {
+  background: rgb(206, 204, 204);
+}
+
+.shop-by-department, .help-settings {
+  margin-top: 5px;
+}
