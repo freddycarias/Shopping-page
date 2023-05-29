@@ -1,11 +1,8 @@
-import PagesRoutes from './routes/routes'
-import './styles/App.css'
+import PagesRoutes from "./routes/routes";
+import "./styles/App.css";
 
 function App() {
-
-  return (
-    <PagesRoutes/>
-  )
+  return <PagesRoutes />;
 }
 
-export default App
+export default App;

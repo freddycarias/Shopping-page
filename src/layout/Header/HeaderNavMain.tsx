@@ -1,4 +1,4 @@
-import '../../styles/HeaderNavMain.css';
+import "../../styles/HeaderNavMain.css";
 
 export default function HeaderNavMain() {
   return (
@@ -38,7 +38,7 @@ export default function HeaderNavMain() {
               </div>
             </div>
           </div>
-        <button className="custom-service-button">Custom Service</button>
+          <button className="custom-service-button">Custom Service</button>
         </div>
       </nav>
     </div>

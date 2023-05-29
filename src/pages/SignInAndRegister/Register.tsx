@@ -1,4 +1,4 @@
-import { auth } from "../../config/firebase-config";
+import { auth } from "../../firebase/firebaseConfig";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -10,25 +10,25 @@ export default function Register() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
-const handleRegister = async () => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      registerEmail,
-      registerPassword
-    );
-    const newUser = userCredential.user;
-    console.log(newUser);
-    navigate("/");
-  } catch (error: any) {
-    console.log(error.message);
-    if (error.code === "auth/invalid-email") {
-      setLoginError("Correo Invalido");
-    } else {
-      setLoginError("");
+  const handleRegister = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      const newUser = userCredential.user;
+      console.log(newUser);
+      navigate("/");
+    } catch (error: any) {
+      console.log(error.message);
+      if (error.code === "auth/invalid-email") {
+        setLoginError("Correo Invalido");
+      } else {
+        setLoginError("");
+      }
     }
-  }
-};
+  };
 
   return (
     <>
@@ -82,7 +82,6 @@ const handleRegister = async () => {
         <button onClick={handleRegister} className="btn btn-primary">
           Create User
         </button>
-
       </div>
     </>
   );

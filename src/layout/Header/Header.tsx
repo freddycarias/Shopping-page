@@ -4,8 +4,8 @@ import HeaderNavMain from "./HeaderNavMain";
 export default function Header() {
   return (
     <header className="nav-main">
-      <HeaderNavBelt/>
-      <HeaderNavMain/>
+      <HeaderNavBelt />
+      <HeaderNavMain />
     </header>
   );
 }

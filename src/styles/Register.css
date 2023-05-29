@@ -8,35 +8,36 @@
   left: 670px;
   top: 80px;
 }
-.register-form{
+
+.register-form {
   margin-top: 30px;
 }
 
-.border-register{
-  border: #dee2e6  solid;
+.border-register {
+  border: #dee2e6 solid;
   margin-top: 100px;
   height: 250px;
   width: 600px;
 }
 
 
-@media only screen and (min-width:360px) and (max-width:780px)  {
+@media only screen and (min-width:360px) and (max-width:780px) {
   .company-logo-img {
     left: 150px;
   }
 
-  .register-form{
-   font-size: 25px;
+  .register-form {
+    font-size: 25px;
   }
 
-  .border-register{
-    border: #dee2e6  solid;
+  .border-register {
+    border: #dee2e6 solid;
     margin-top: 100px;
     height: 300px;
     width: 350px;
   }
 
-  .register-email{
+  .register-email {
     left: 0px;
   }
 }
@@ -45,16 +46,17 @@
   .company-logo-img {
     left: 455px;
   }
-  .register-form{
-    font-size: 20px;
-   }
 
-  .border-register{
+  .register-form {
+    font-size: 20px;
+  }
+
+  .border-register {
     width: 800px;
     height: 250px;
   }
 
-  .register-email{
+  .register-email {
     left: 220px;
   }
 

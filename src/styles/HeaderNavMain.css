@@ -4,7 +4,7 @@
   height: 45px;
 }
 
-.nav-hambuger-menu{
+.nav-hambuger-menu {
   border: solid;
   border-radius: 10px;
   height: 40px;
@@ -15,21 +15,22 @@
   bottom: 5px;
 }
 
-.nav-hambuger-menu:hover{
+.nav-hambuger-menu:hover {
   background-color: #ffffff;
   color: #3498db;
   border-radius: 10px;
   border-color: #ffffff;
 }
 
-.custom-service-button{
+.custom-service-button {
   border: solid;
   border-color: #ffffff;
   background-color: #3498db;
   color: white;
   border-radius: 10px;
 }
-.custom-service-button:hover{
+
+.custom-service-button:hover {
   border: solid;
   border-color: #3498db;
   background-color: #ffffff;
@@ -42,12 +43,14 @@
   .nav-main {
     margin-top: 171px;
     background-color: #3498db;
-    
+
   }
-  .offcanvas.show{
-  width: 300px;
-}
-  .nav-hambuger-menu{
+
+  .offcanvas.show {
+    width: 300px;
+  }
+
+  .nav-hambuger-menu {
     position: relative;
     left: 10px;
   }
