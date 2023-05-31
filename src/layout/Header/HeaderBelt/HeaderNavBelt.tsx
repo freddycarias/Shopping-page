@@ -36,6 +36,8 @@ export default function HeaderNavBelt() {
                     <input
                       className="form-control me-2 input-search"
                       type="search"
+                      placeholder="Search"
+                      name="input-header"
                     />
                     <button
                       className="btn btn-outline-success button-search"
