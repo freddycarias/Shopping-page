@@ -1,6 +1,6 @@
 import Header from "../../layout/Header/Header";
 import Footer from "../../layout/Footer/Footer";
-import ListProducts from "../../components/firebaseProducts/ProductsList.component";
+import ListProducts from "../../components/ProductsList.component";
 
 export default function Store() {
   return (
