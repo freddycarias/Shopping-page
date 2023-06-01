@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, collection } from "firebase/firestore";
-import { database } from "../../firebase/firebaseConfig";
+import { database } from "../../services/firebase";
 import Footer from "../../layout/Footer/Footer";
 import Header from "../../layout/Header/Header";
 import "../../styles/ShowFullProduct.css";
@@ -50,6 +50,7 @@ export default function ShowFullProduct() {
           <div className="container text-center">
             <h4 className="product-name">{product.name}</h4>
             <div className="row align-items-center">
+
               <div className="col-md-3 col-in-left">
                 <img
                   className="product-img"
@@ -69,7 +70,7 @@ export default function ShowFullProduct() {
                 </div>
 
                 <div className="product-color">
-                  <div>Color:</div>
+                  <div className="color-title">Color:</div>
                   <h6 className="color-text">{product.color}</h6>
                 </div>
 
@@ -95,18 +96,18 @@ export default function ShowFullProduct() {
                 </div>
 
                 <div className="row justify-content-center information-list">
-                  <div className="col-6">
+                  <div className="col-6 information-list-1">
                     <ul>
-                      <li>Payment</li>
-                      <li>Ships from</li>
-                      <li>Sold by</li>
+                      <li className="payment">Payment</li>
+                      <li className="ships-from">Ships from</li>
+                      <li className="sold-by">Sold by</li>
                       <li className="returns">Returns</li>
                       <li className="support">Support</li>
                       <li>Packaging</li>
 
                     </ul>
                   </div>
-                  <div className="col-6">
+                  <div className="col-6 information-list-2">
                   <ul>
                       <li>Secure transaction</li>
                       <li>Online Shop</li>
