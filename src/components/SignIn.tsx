@@ -6,9 +6,9 @@ import {
   signOut,
   User,
 } from "firebase/auth";
-import { auth } from "../../firebase/firebaseConfig";
+import { auth } from "../services/firebase";
 
-import "../../styles/SignIn.css";
+import "../styles/SignIn.css";
 
 export default function SignIn() {
   const [loginEmail, setLoginEmail] = useState("");
