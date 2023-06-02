@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, collection } from "firebase/firestore";
-import { database } from "../../services/firebase";
-import Footer from "../../layout/Footer/Footer";
-import Header from "../../layout/Header/Header";
-import "../../styles/ShowFullProduct.css";
+import { database } from "../services/firebase";
+import Footer from "../layout/Footer/Footer";
+import Header from "../layout/Header/Header";
+import "../styles/ProductDetail.component.css";
 
 interface Product {
   id: number;
@@ -20,7 +20,7 @@ interface Product {
   stocked: boolean;
 }
 
-export default function ShowFullProduct() {
+export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
