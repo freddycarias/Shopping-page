@@ -75,6 +75,11 @@
   border-color: #3498db;
 }
 
+.signed-in {
+  width: 165px;
+}
+
+
 .shopping-cart {
   background-repeat: no-repeat;
   background-image: url(../assets/ShoppingCart/ShoppingCart.png);

@@ -1,9 +1,24 @@
 import AllDifferentProductTypes from "./AllDifferentProductTypes";
 import { useNavigate } from "react-router-dom";
 import "../../../styles/HeaderNavBelt.css";
+import { useState , useEffect} from "react";
+import {
+  User,
+  onAuthStateChanged
+} from "firebase/auth";
+import { auth } from "../../../services/firebase";
 
 export default function HeaderNavBelt() {
   const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="nav-belt">
       <nav className="navbar fixed-top">
@@ -53,10 +68,10 @@ export default function HeaderNavBelt() {
           </div>
           <div className="nav-right">
             <button
-              className="account-button"
+              className={`account-button ${user ? "signed-in" : "not-signed-in"}`}
               onClick={() => navigate("/signin")}
             >
-              Hi, Sign in
+              {user ? `${user.email}` : "hi, sign in"}
             </button>
             <a className="navbar-brand" href="/">
               <img className="shopping-cart" />
