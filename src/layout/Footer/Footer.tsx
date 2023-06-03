@@ -3,7 +3,6 @@ import "../../styles/ContactUs.css";
 export default function Footer() {
   return (
     <footer className="nav-footer-vertical-column">
-      <hr className="hr-footer" />
       <div className="container px-4 text-center">
         <div className="row gx-5">
           <div className="col">
