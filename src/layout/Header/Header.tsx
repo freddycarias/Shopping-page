@@ -1,11 +1,14 @@
-import HeaderNavBelt from "./HeaderBelt/HeaderNavBelt";
-import HeaderNavMain from "./HeaderMain/HeaderNavMain";
-
+import HeaderNavMainLayout from "./HeaderMain/HeaderNavMain.layout";
+import HeaderNavBeltLayout from "./HeaderBelt/HeaderNavBelt.layout";
 export default function Header() {
   return (
-    <header className="nav-main">
-      <HeaderNavBelt />
-      <HeaderNavMain />
-    </header>
-  );
+    <div>
+      <div className="col">
+        <HeaderNavBeltLayout/>
+      </div>
+      <div className="col">
+        <HeaderNavMainLayout/>
+      </div>
+    </div>
+  )
 }
