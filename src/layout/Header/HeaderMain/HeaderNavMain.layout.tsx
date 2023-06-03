@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderHmenuCanvas from "./HeaderHmenuCanvas";
 import "../../../styles/HeaderNavMain.css";
 
-export default function HeaderNavMain() {
+export default function HeaderNavMainLayout() {
   const navigate = useNavigate()
   return (
     <div className="nav-main">
