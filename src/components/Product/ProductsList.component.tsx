@@ -11,7 +11,6 @@ const ProductListComponent: React.FC = () => {
     const fetchData = async () => {
       try {
         const products = await productService.getAll();
-        console.log(products);
         setProduct(products);
       } catch (error) {
         console.error(error);
@@ -23,12 +22,12 @@ const ProductListComponent: React.FC = () => {
 
   return (
     <>
-      <div className="d-flex p-10">
+      <div className="d-flex flex-wrap p-10">
         {product.map((product) => (
-              <ProductCompononent product={product} printDetails={false} />
+              <ProductCompononent product={product} printDetails={false} key={product.id}/>
           ))}
       </div>
-      </>
+    </>
   );
 };
 
