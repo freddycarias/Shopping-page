@@ -1,97 +1,23 @@
 .nav-main {
-  margin-top: 60px;
-  background-color: #3498db;
-  height: 45px;
+  margin-top: 70px;
+  margin-bottom: 5px; 
 }
 
-.nav-hambuger-menu {
-  border: solid;
-  border-radius: 10px;
-  height: 40px;
-  width: 80px;
-  color: #ffffff;
-  text-align: center;
-  position: relative;
-  bottom: 5px;
-  margin-top: -80px;
-}
-
-.nav-hambuger-menu:hover {
-  background-color: #ffffff;
-  color: #3498db;
-  border-radius: 10px;
-  border-color: #ffffff;
+.hamburger-menu {
+  margin-left: 10px;
 }
 
 .custom-service-button {
-  border: solid;
-  border-color: #ffffff;
-  background-color: #3498db;
-  color: white;
-  border-radius: 10px;
-  margin-top: -90px;
-}
-
-.custom-service-button:hover {
-  border: solid;
-  border-color: #3498db;
-  background-color: #ffffff;
-  color: #3498db;
-  bottom: 5px;
-  border-radius: 10px;
-}
-
-@media only screen and (min-width:360px) and (max-width:780px) {
-  .nav-main {
-    margin-top: 204px;
-    background-color: #3498db;
-
-  }
-
-  .offcanvas.show {
-    width: 300px;
-  }
-
-  .nav-hambuger-menu {
-    position: relative;
-    left: 10px;
-    margin-top: -368px;
-
-  }
-
-  .custom-service-button {
-    margin-top: -380px;
-  }
+  margin-right: 10px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .nav-main {
-    margin-top: 110px;
-    background-color: #3498db;
+    margin-top: 120px;
+    margin-bottom: 50px; 
   }
-
-  .nav-hambuger-menu {
-    margin-top: -180px;
-  }
-
-  .custom-service-button {
-    margin-top: -190px;
-  }
-
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1100px) {
-  .nav-main {
-    margin-top: 110px;
-    background-color: #3498db;
-  }
+@media only screen and (min-width: 1024px) and (max-width: 1300px) {
 
-  .nav-hambuger-menu {
-    margin-top: -180px;
-  }
-
-  .custom-service-button {
-    margin-top: -190px;
-  }
-  
 }
