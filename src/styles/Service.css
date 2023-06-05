@@ -1,0 +1,7 @@
+.service-component {
+  cursor: pointer;
+}
+
+.service-component-body:hover {
+  background-color: aliceblue;
+}
