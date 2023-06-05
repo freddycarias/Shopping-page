@@ -7,6 +7,10 @@ type UserProps = {
 }
 
 export const authService = {
+  getCurrentUser: () => {
+    const user = auth.currentUser;
+    return user;
+  },
   registerUser: async({email, password}:UserProps) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
