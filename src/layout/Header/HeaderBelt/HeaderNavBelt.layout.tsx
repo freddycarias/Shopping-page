@@ -69,7 +69,7 @@ export default function HeaderNavBeltLayout() {
           >
             {user ? `${user.email}` : "hi, sign in"}
           </button>
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/shopping-cart">
             <img className="shopping-cart" />
           </a>
         </div>
