@@ -1,11 +1,11 @@
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { Product } from '../models/product';
-import { database } from './firebase';
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { Product } from "../models/product";
+import { database } from "./firebase";
 
 export const productService = {
-  getAll: async() => {
+  getAll: async () => {
     try {
-      const dataCollectionRef = collection(database, 'Products');
+      const dataCollectionRef = collection(database, "Products");
       const dataDocuments = await getDocs(dataCollectionRef);
       const data = dataDocuments.docs.map((doc) => {
         const product = doc.data() as Product;
@@ -14,10 +14,10 @@ export const productService = {
       });
       return data as Product[];
     } catch (error) {
-      throw new Error('Error fetching data from Firestore');
+      throw new Error("Error fetching data from Firestore");
     }
   },
-  getById: async(id: string) => {
+  getById: async (id: string) => {
     try {
       const productDocRef = doc(collection(database, "Products"), id);
       const productDocSnap = await getDoc(productDocRef);
@@ -29,7 +29,7 @@ export const productService = {
       }
       throw new Error(`product ${id} doesn't exists`);
     } catch (error) {
-      throw new Error('Error fetching data from Firestore');
+      throw new Error("Error fetching data from Firestore");
     }
   },
-}
+};
