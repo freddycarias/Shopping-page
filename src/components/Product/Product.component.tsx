@@ -35,11 +35,12 @@ export default function ProductCompononent({
           )}
           {printDetails && (
             <div className="row" style={{marginBottom: "100px"}}>
+              <h3 className="text-center">{product.name}</h3>
               <div className="col-3 text-center">
                 <img
                   src={product.images.path}
                   alt={product.images.name}
-                  style={{ width: "200px", height: "150px" }}
+                  style={{ width: "300px", height: "200px" }}
                   className="img-fluid"
                 />
               </div>
