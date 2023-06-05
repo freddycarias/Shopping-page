@@ -24,7 +24,7 @@ export default function HeaderNavMainLayout() {
         <div className="col-6 mb-3 " style={{ textAlign: "right"}}>
           <button
             className="btn btn-primary custom-service-button"
-            onClick={() => navigate("/custom-service")}
+            onClick={() => navigate("/customer-service")}
           >
             Custom Service
           </button>
