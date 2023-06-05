@@ -99,7 +99,7 @@ export default function ProductCompononent({
                         Eligible for Return, Refund or Replacement within 30
                         days of receipt
                       </li>
-                      <li>Free Amazon product support included</li>
+                      <li>Free Shooping Online product support included</li>
                       <li>Shows what's inside</li>
                     </ul>
                   </div>
