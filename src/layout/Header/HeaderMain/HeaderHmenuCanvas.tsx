@@ -1,21 +1,7 @@
-import "../../../styles/HeaderHmenuCanvas.css"
-
-export function ShopByDepartment ({route,name}:{route: string ,name: string}) {
-  return (
-    <>
-      <div className="container text-center">
-        <div className="row">
-          <div className="col-6 col-sm-12 background-offcanvas-body">
-            <a href={route} className="routes-offcanvas-body">
-              <h6>{name}</h6>
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
+import { ProductCategoryComponent } from "../../../components/Header/ProductCategory.component";
+import AccountButtonComponent from "../../../components/AccountButtonComponent.component";
+import "../../../styles/HeaderHmenuCanvas.css";
+import Signout from "../../../components/Auth/Signout";
 
 export default function HeaderHmenuCanvas() {
   return (
@@ -27,11 +13,7 @@ export default function HeaderHmenuCanvas() {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div className="offcanvas-header">
-          <a href="/signin" className="title-hmenu-canvas">
-            <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-              Hi, sign in
-            </h5>
-          </a>
+          <AccountButtonComponent isButton={false} />
           <button
             type="button"
             className="btn-close"
@@ -42,22 +24,37 @@ export default function HeaderHmenuCanvas() {
         <div className="offcanvas-body">
           <div className="container text-center">
             <div className="col shop-by-department">
-                <h4>Shop By Department</h4>
-                <ShopByDepartment route="/books" name={"Books"}/>
-                <ShopByDepartment route="/computers" name={"Computers"}/>
-                <ShopByDepartment route="/electronics" name={"Electronics"}/>
-                <ShopByDepartment route="/video-games" name={"Video Games"}/>
+              <h4>Shop By Department</h4>
+              {categoryType.map((category) => (
+                <ProductCategoryComponent
+                  route={category.route}
+                  name={category.name}
+                />
+              ))}
             </div>
-            <hr/>
+            <hr />
             <div className="col help-settings">
-                <h4>Help & Settings</h4>
-                <ShopByDepartment route="/account" name={"Your Account"}/>
-                <ShopByDepartment route="/customer-service" name={"Customer Service"}/>
-                <ShopByDepartment route="/signin" name={"Sign In"}/>
-              </div>
+              <h4>Help & Settings</h4>
+              {helpAndSettings.map((hs) => (
+                <ProductCategoryComponent route={hs.route} name={hs.name} />
+              ))}
+              <Signout/>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 }
+
+const categoryType = [
+  { route: "/books", name: "Books" },
+  { route: "/computers", name: "Computers" },
+  { route: "/electronics", name: "Electronics" },
+  { route: "/video-games", name: "Video Games" },
+];
+
+const helpAndSettings = [
+  { route: "/account", name: "Your Account" },
+  { route: "/customer-service", name: "Customer Service" },
+];
