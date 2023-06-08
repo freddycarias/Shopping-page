@@ -1,4 +1,4 @@
-import { ProductCategoryComponent } from "../../../components/Header/ProductCategory.component";
+import { HamburgerMenuComponent } from "../../../components/Header/HamburgerMenu.component";
 import AccountButtonComponent from "../../../components/AccountButtonComponent.component";
 import "../../../styles/HeaderHmenuCanvas.css";
 import Signout from "../../../components/Auth/Signout";
@@ -23,23 +23,28 @@ export default function HeaderHmenuCanvas() {
         </div>
         <div className="offcanvas-body">
           <div className="container text-center">
-            <div className="col shop-by-department">
-              <h4>Shop By Department</h4>
-              {categoryType.map((category) => (
-                <ProductCategoryComponent
-                  route={category.route}
-                  name={category.name}
+            <div className="col help-settings">
+              <h4>Categories</h4>
+              {hHamburgermenuCategories.map((hs) => (
+                <HamburgerMenuComponent
+                  route={hs.route}
+                  name={hs.name}
+                  key={hs.name}
                 />
               ))}
             </div>
             <hr />
             <div className="col help-settings">
               <h4>Help & Settings</h4>
-              {helpAndSettings.map((hs) => (
-                <ProductCategoryComponent route={hs.route} name={hs.name} />
+              {hHamburgermenuSetting.map((hs) => (
+                <HamburgerMenuComponent
+                  route={hs.route}
+                  name={hs.name}
+                  key={hs.name}
+                />
               ))}
-              <Signout/>
             </div>
+            <Signout />
           </div>
         </div>
       </div>
@@ -47,14 +52,11 @@ export default function HeaderHmenuCanvas() {
   );
 }
 
-const categoryType = [
-  { route: "/books", name: "Books" },
-  { route: "/computers", name: "Computers" },
-  { route: "/electronics", name: "Electronics" },
-  { route: "/video-games", name: "Video Games" },
+const hHamburgermenuCategories = [
+  { route: "/product-categories", name: "Products" },
 ];
 
-const helpAndSettings = [
+const hHamburgermenuSetting = [
   { route: "/account", name: "Your Account" },
   { route: "/customer-service", name: "Customer Service" },
 ];

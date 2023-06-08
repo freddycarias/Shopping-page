@@ -1,4 +1,4 @@
-export function ProductCategoryComponent ({route,name}:{route: string ,name: string}) {
+export function HamburgerMenuComponent ({route,name}:{route: string ,name: string}) {
   return (
     <>
       <div className="container text-center">
