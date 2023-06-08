@@ -5,6 +5,7 @@ import HomePage from "./pages/home.page";
 import ProductDetailPage from "./pages/product-detail.page";
 import { CustomerServiceComponent } from "./components/CustomerService/CostumerService.component";
 import "./styles/App.css";
+import ProductListByCategory from "./components/Product/ProductListByCategory.component";
 
 function App() {
   return(
@@ -14,6 +15,7 @@ function App() {
       <Route path="/signin" element={<SignIn />} />
       <Route path="customer-service" element={<CustomerServiceComponent/>}/>
       <Route path="/show-full-product/:id" element={<ProductDetailPage />} />
+      <Route path="/product-categories" element={<ProductListByCategory />}/>
     </Routes>
   );
 }

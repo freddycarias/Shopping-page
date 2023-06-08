@@ -1,4 +1,3 @@
-import AllDifferentProductTypes from "./AllDifferentProductTypes";
 import "../../../styles/HeaderNavBelt.css"
 import AccountButtonComponent from "../../../components/AccountButtonComponent.component";
 
@@ -20,17 +19,6 @@ export default function HeaderNavBeltLayout() {
               aria-label="Toolbar with button groups"
             >
               <div className="input-group all-input-search">
-                <div className="btn-group">
-                  <button
-                    className="all-button dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    All
-                  </button>
-                  <AllDifferentProductTypes />
-                </div>
                 <div className="d-flex" role="search">
                   <input
                     className="form-control me-2 input-search"
