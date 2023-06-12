@@ -6,6 +6,7 @@ import ProductDetailPage from "./pages/product-detail.page";
 import { CustomerServiceComponent } from "./components/CustomerService/CostumerService.component";
 import "./styles/App.css";
 import ProductListByCategory from "./components/Product/ProductListByCategory.component";
+import AddANewAddress from "./components/FormtoBuy/AddANewAddress.component";
 
 function App() {
   return(
@@ -16,6 +17,7 @@ function App() {
       <Route path="customer-service" element={<CustomerServiceComponent/>}/>
       <Route path="/show-full-product/:id" element={<ProductDetailPage />} />
       <Route path="/product-categories" element={<ProductListByCategory />}/>
+      <Route path="/buy-form" element={<AddANewAddress />}/>
     </Routes>
   );
 }
