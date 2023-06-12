@@ -33,10 +33,10 @@ export default function HourComponent() {
                   Can this address receive deliveries on federal holidays?
                 </h5>
                 <div className="col text-center">
-                  <Radio name="Si" id="holidayssi" />
+                  <Radio title="Si" id="holidayssi" name="holidays"/>
                 </div>
                 <div className="col text-center">
-                  <Radio name="No" id="holidaysno" />
+                  <Radio title="No" id="holidaysno" name="holidays"/>
                 </div>
               </div>
             </div>

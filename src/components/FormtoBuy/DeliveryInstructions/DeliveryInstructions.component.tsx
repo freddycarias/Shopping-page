@@ -10,7 +10,7 @@ function DeliveryInstructionsTypesOfHousing() {
       {typesOfHousing.map((housing) => (
         <div className="col" key={housing.id}>
           <div className="form-check">
-            <Radio name={housing.name} id={housing.id} />
+            <Radio title={housing.title} id={housing.id} name="delivery-instructions" />
           </div>
         </div>
       ))}
@@ -38,8 +38,8 @@ export default function DeliveryInstructionsComponent() {
 }
 
 const typesOfHousing = [
-  { name: "House", id: "house" },
-  { name: "Apartment", id: "apartment" },
-  { name: "Business", id: "business" },
-  { name: "Other", id: "other" },
+  { title: "House", id: "house" },
+  { title: "Apartment", id: "apartment" },
+  { title: "Business", id: "business" },
+  { title: "Other", id: "other" },
 ];

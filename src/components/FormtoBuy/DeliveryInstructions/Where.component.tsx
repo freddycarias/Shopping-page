@@ -19,7 +19,7 @@ export const WhereComponent = () => {
             <div className="card card-body">
               <div className="form-check">
                 {radios.map((radio) => (
-                  <Radio name={radio.name} id={radio.id} key={radio.id} />
+                  <Radio title={radio.title} id={radio.id} key={radio.id} name="house-part" />
                 ))}
               </div>
             </div>
@@ -31,11 +31,11 @@ export const WhereComponent = () => {
 };
 
 const radios = [
-  {name: "Front door" , id: "front-door"},
-  {name: "Back door" , id: "back-door"},
-  {name: "Side porch" , id: "side-porch"},
-  {name: "Building reception" , id: "building-reception"},
-  {name: "Mailroom or property staff" , id: "mailroom-or-property-staff"},
-  {name: "Garage" , id: "garage"},
-  {name: "No preference" , id: "no-preference"},
+  {title: "Front door" , id: "front-door"},
+  {title: "Back door" , id: "back-door"},
+  {title: "Side porch" , id: "side-porch"},
+  {title: "Building reception" , id: "building-reception"},
+  {title: "Mailroom or property staff" , id: "mailroom-or-property-staff"},
+  {title: "Garage" , id: "garage"},
+  {title: "No preference" , id: "no-preference"},
 ]
