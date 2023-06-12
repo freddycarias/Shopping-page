@@ -1,15 +1,15 @@
-export default function Radio({name, id}:{name : string, id : string}) {
+export default function Radio({name,title, id}:{name: string,title : string, id : string}) {
   return (
     <>
       <div>
         <input
           className="form-check-input"
           type="radio"
-          name="flexRadioDefault"
+          name={name}
           id={id}
         />
         <label className="form-check-label" htmlFor={id}>
-          {name}
+          {title}
         </label>
       </div>
     </>

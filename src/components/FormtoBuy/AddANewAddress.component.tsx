@@ -4,6 +4,7 @@ import FormOfBuyInput from "./FormOfBuyInput.componen";
 import FooterComponent from "./Footer.component";
 import FormOfBuySelectComponent from "./FormOfBuySelect.component";
 import { v4 as uuidv4 } from "uuid";
+import FormOfBuyTableComponent from "./FormOfBuyTable.component";
 
 export default function AddANewAddressComponent() {
   return (
@@ -54,7 +55,7 @@ export default function AddANewAddressComponent() {
                           />
                         </div>
                       </div>
-                      <div className="col-4" style={{marginTop: "10px"}}>
+                      <div className="col-4" style={{ marginTop: "10px" }}>
                         {formOfBuySelectState.map((select) => (
                           <FormOfBuySelectComponent
                             title={select.title}
@@ -79,17 +80,17 @@ export default function AddANewAddressComponent() {
                         className="form-check-input"
                         type="checkbox"
                         value=""
-                        id="flexCheckChecked"
+                        id="flexCheckChecked1"
                       />
                       <label
                         className="form-check-label"
-                        htmlFor="flexCheckChecked"
+                        htmlFor="flexCheckChecked1"
                       >
                         Make this my default address
                       </label>
                     </div>
                   </div>
-                  <div className="form-to-buy-delivery-instructions">
+                  <div className="form-to-buy-delivery-instructions" style={{marginBottom: "20px"}}>
                     <h6>Delivery instructions (optional)</h6>
                     <div>
                       <p>
@@ -130,7 +131,46 @@ export default function AddANewAddressComponent() {
               marginLeft: "20px",
             }}
           >
-            One of two columns
+            <div className="text-center" style={{marginTop: "20px"}}>
+              <button className="btn btn-warning" style={{marginBottom: "20px"}}>Use This Address</button>
+              <p>
+                Choose a shipping address to continue checking out. You'll still
+                have a chance to review and edit your order before it's final.
+              </p>
+            </div>
+            <div
+              className="row text-center"
+              style={{
+                width: "335px",
+                height: "150px",
+                marginLeft: "20px",
+              }}
+            >
+              <hr />
+              <h6>Order Summary</h6>
+              {formOfBuyTable.map((table) => (
+                <FormOfBuyTableComponent
+                  subtitle={table.subtitle}
+                  price={table.price}
+                  key={table.id}
+                />
+              ))}
+            </div>
+            <hr />
+            <div className="row text-center" style={{
+                width: "335px",
+                height: "40px",
+                marginLeft: "20px",
+              }}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td className="text-start">Order Total</td>
+                    <td className="text-end">000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <FooterComponent />
@@ -182,3 +222,10 @@ const formOfBuySelectState = [
     id: uuidv4(),
   },
 ];
+
+const formOfBuyTable = [
+  {subtitle: "Items (X):", price: 0, id: 1},
+  {subtitle: "Shipping & handling", price: 0, id: 2},
+  {subtitle: "Total before tax:", price: 0, id: 3},
+  {subtitle: "Estimated tax to be collected:", price: 0, id: 4}
+]
