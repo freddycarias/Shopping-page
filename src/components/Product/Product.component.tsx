@@ -1,5 +1,6 @@
 import { Product } from "../../models/product";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/ProductDetail.component.css";
 
 type productProps = {
@@ -11,6 +12,7 @@ export default function ProductCompononent({
   product,
   printDetails,
 }: productProps) {
+  const navigate = useNavigate();
   return (
     <>
       {product && (
@@ -75,7 +77,7 @@ export default function ProductCompononent({
                     <button className="btn btn-add-to-cart">Add to Cart</button>
                   </div>
                   <div className="add-to buy-now">
-                    <button className="btn btn-warning">Buy Now</button>
+                    <button className="btn btn-warning" onClick={() => navigate("/buy-form")}>Buy Now</button>
                   </div>
                 </div>
 
