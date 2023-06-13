@@ -10,8 +10,14 @@ export default function AddANewAddressComponent() {
   return (
     <section>
       <div className="container">
-        <div className="row text-center">
-          <div className="col">Icon</div>
+        <div className="row text-center mt-3">
+          <div className="col">
+          <div className="nav-left">
+          <a className="navbar-brand" href="/">
+            <img className="company-logo" />
+          </a>
+        </div>
+          </div>
           <div className="col">
             <h2>Checkout(Items X)</h2>
           </div>
