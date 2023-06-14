@@ -1,13 +1,27 @@
+import CheckBoxComponent from "../CheckBox.component";
+import ShoppingCartCardComponent from "./ShoppingCartCard.component";
+
 export default function ShoppingCartComponent() {
   return (
-    <div className="container" style={{marginBottom: "230px"}}>
+    <div className="container" style={{ marginBottom: "230px" }}>
       <div className="row">
         <div className="col-8">
           <div className="card w-100 mb-3">
             <div className="card-body">
-              <h3 className="card-title">Shopping Cart</h3>
+              <div className="row">
+                <div className="col">
+                  <h3 className="card-title">Shopping Cart</h3>
+                </div>
+              </div>
               <hr />
-              <p className="card-text">Aqui van las card que seleccionemos</p>
+              <div className="row">
+                <ShoppingCartCardComponent />
+              </div>
+              <div className="row">
+                <div className="col text-end">
+                  Subtotal (X item): <strong>X</strong>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -17,26 +31,15 @@ export default function ShoppingCartComponent() {
               <p className="card-title">
                 Subtotal (X item): <strong>X</strong>
               </p>
-              <p className="card-text">
+              <div className="card-text">
                 <div className="shopping-cart-checkbox">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="gift"
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="gift"
-                    >
-                      This order contains a gift
-                    </label>
-                  </div>
+                  <CheckBoxComponent id="gift" title="This order contains a gift"/>
                 </div>
-              </p>
+              </div>
               <div className="text-center">
-                <button className="btn btn-warning  w-75">proceed to checkout</button>
+                <button className="btn btn-warning  w-75">
+                  proceed to checkout
+                </button>
               </div>
             </div>
           </div>
