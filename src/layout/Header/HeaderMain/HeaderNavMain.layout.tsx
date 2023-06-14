@@ -26,7 +26,7 @@ export default function HeaderNavMainLayout() {
             className="btn btn-primary custom-service-button"
             onClick={() => navigate("/customer-service")}
           >
-            Custom Service
+            Customer Service
           </button>
         </div>
       </div>
