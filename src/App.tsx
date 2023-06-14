@@ -7,6 +7,7 @@ import { CustomerServiceComponent } from "./components/CustomerService/CostumerS
 import "./styles/App.css";
 import ProductListByCategory from "./components/Product/ProductListByCategory.component";
 import AddANewAddress from "./components/FormtoBuy/AddANewAddress.component";
+import ShoppingCartPage from "./pages/shopping-cart.page";
 
 function App() {
   return(
@@ -18,6 +19,7 @@ function App() {
       <Route path="/show-full-product/:id" element={<ProductDetailPage />} />
       <Route path="/product-categories" element={<ProductListByCategory />}/>
       <Route path="/buy-form" element={<AddANewAddress />}/>
+      <Route path="/shopping-cart" element={<ShoppingCartPage/>}/>
     </Routes>
   );
 }
