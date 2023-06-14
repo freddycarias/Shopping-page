@@ -5,6 +5,7 @@ import FooterComponent from "./Footer.component";
 import FormOfBuySelectComponent from "./FormOfBuySelect.component";
 import { v4 as uuidv4 } from "uuid";
 import FormOfBuyTableComponent from "./FormOfBuyTable.component";
+import CheckBoxComponent from "../CheckBox.component";
 
 export default function AddANewAddressComponent() {
   return (
@@ -81,20 +82,7 @@ export default function AddANewAddressComponent() {
                     </div>
                   </div>
                   <div className="form-to-buy-checkbox">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckChecked1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="flexCheckChecked1"
-                      >
-                        Make this my default address
-                      </label>
-                    </div>
+                    <CheckBoxComponent id="flexCheckChecked1" title="Make this my default address"/>
                   </div>
                   <div className="form-to-buy-delivery-instructions" style={{marginBottom: "20px"}}>
                     <h6>Delivery instructions (optional)</h6>

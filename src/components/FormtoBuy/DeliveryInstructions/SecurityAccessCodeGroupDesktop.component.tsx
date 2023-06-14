@@ -1,3 +1,4 @@
+import CheckBoxComponent from "../../CheckBox.component";
 import ImputFormControlComponent from "../../ImputFormControl.component";
 
 export default function SecurityAccessCodeGroupDesktopComponent() {
@@ -28,17 +29,10 @@ export default function SecurityAccessCodeGroupDesktopComponent() {
                   />
                 ))}
               </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckChecked"
-                />
-                <label className="form-check-label" htmlFor="flexCheckChecked">
-                  Key or fob required for delivery
-                </label>
-              </div>
+              <CheckBoxComponent
+                id="flexCheckChecked"
+                title="Key or fob required for delivery"
+              />
             </div>
           </div>
         </div>
