@@ -10,6 +10,8 @@ import AddANewAddress from "./components/FormtoBuy/AddANewAddress.component";
 import ShoppingCartPage from "./pages/shopping-cart.page";
 import AccountPage from "./pages/account.page";
 import { useAuthentication } from "./hooks/useAuthentication";
+import LoginAndSecurityComponent from "./components/Account/LoginAndSecurity/LoginAndSecurity.component";
+import AboutYouComponent from "./components/Account/AboutYou/AboutYou.component";
 
 
 function App() {
@@ -25,13 +27,11 @@ function App() {
       <Route path="customer-service" element={<CustomerServiceComponent />} />
       <Route path="/show-full-product/:id" element={<ProductDetailPage />} />
       <Route path="/product-categories" element={<ProductListByCategory />} />
-      {isAuthenticated ? (
-        <Route path="/buy-form" element={<AddANewAddress />} />
-      ) : (
-        <Route path="/buy-form" element={<RedirectToLogin />} />
-      )}
+      <Route path="/buy-form" element={isAuthenticated ? <AddANewAddress /> : <RedirectToLogin />} />
       <Route path="/shopping-cart" element={<ShoppingCartPage />} />
       <Route path="/account" element={<AccountPage />} />
+      <Route path="/security" element={<LoginAndSecurityComponent/>}/>
+      <Route path="/about-you" element={<AboutYouComponent/>}/>
     </Routes>
   );
 }
