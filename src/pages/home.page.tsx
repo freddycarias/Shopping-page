@@ -5,7 +5,7 @@ import ListProducts from "../components/Product/ProductsList.component";
 export default function HomePage() {
   return (
     <>
-      <div className="contaner">
+      <div>
         <div className="row">
           <Header />
         </div>
