@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { productService } from '../../services/product.service';
 import ProductComponent from './Product.component';
 import "../../styles/product.component.css";
+import { Product } from '../../models/product';
 
 
 const ProductListComponent: React.FC = () => {
-  const [product, setProduct] = useState<any[]>([]);
+  const [product, setProduct] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
 

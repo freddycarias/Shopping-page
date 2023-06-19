@@ -12,6 +12,7 @@ import AccountPage from "./pages/account.page";
 import { useAuthentication } from "./hooks/useAuthentication";
 import LoginAndSecurityComponent from "./components/Account/LoginAndSecurity/LoginAndSecurity.component";
 import AboutYouComponent from "./components/Account/AboutYou/AboutYou.component";
+import PagePage from "./pages/page.page";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Route path="/account" element={<AccountPage />} />
       <Route path="/security" element={<LoginAndSecurityComponent/>}/>
       <Route path="/about-you" element={<AboutYouComponent/>}/>
+      <Route path="/page" element={<PagePage/>}/>
     </Routes>
   );
 }
