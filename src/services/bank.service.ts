@@ -1,18 +1,20 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { database } from "./firebase";
 import { Bank } from "../models/bank";
 
 export const bankService = {
-  getAllBank: async () => {
+  getAllBank: (updateCallback: (arg0: Bank[]) => void) => {
     try {
       const dataCollectionRef = collection(database, "Bank");
-      const dataDos = await getDocs(dataCollectionRef);
-      const data = dataDos.docs.map((doc) => {
-        const bank = doc.data() as Bank;
-        bank.id = doc.id;
-        return bank;
+      const unsubscribe = onSnapshot(dataCollectionRef, (snapshot) => {
+        const data = snapshot.docs.map((doc) => {
+          const bank = doc.data() as Bank;
+          bank.id = doc.id;
+          return bank;
+        });
+        updateCallback(data);
       });
-      return data;
+      return unsubscribe;
     } catch (error) {
       throw new Error("Error fetching data from Firestore");
     }

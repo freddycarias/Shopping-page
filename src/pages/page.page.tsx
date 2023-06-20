@@ -12,15 +12,13 @@ export default function PagePage() {
   const [editingBankId, setEditingBankId] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const typeOfBank = await bankService.getAllBank();
-        setBank(typeOfBank);
-      } catch (error) {
-        throw new Error("Error");
-      }
+    const unsubscribe = bankService.getAllBank((data) => {
+      setBank(data);
+    });
+
+    return () => {
+      unsubscribe();
     };
-    fetchData();
   }, []);
 
   const handleClickDeleteBank = async (idDocumento: string) => {
