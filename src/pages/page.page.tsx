@@ -6,6 +6,10 @@ import { bankService } from "../services/bank.service";
 export default function PagePage() {
   const [bank, setBank] = useState<Bank[]>([]);
   const [newBank, setNewBank] = useState("");
+  const [newBankNames, setNewBankNames] = useState<{ [key: string]: string }>(
+    {}
+  );
+  const [editingBankId, setEditingBankId] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +23,7 @@ export default function PagePage() {
     fetchData();
   }, []);
 
-  const handleClickDeletBank = async (idDocumento: string) => {
+  const handleClickDeleteBank = async (idDocumento: string) => {
     try {
       await bankService.deleteDoc(idDocumento);
       console.log("Banco eliminado correctamente");
@@ -33,11 +37,37 @@ export default function PagePage() {
     setNewBank(event.target.value);
   };
 
+  const handleChangeEditBank = (
+    event: ChangeEvent<HTMLInputElement>,
+    idDocumento: string
+  ) => {
+    const value = event.target.value;
+    setNewBankNames((prevNames) => ({
+      ...prevNames,
+      [idDocumento]: value,
+    }));
+    setEditingBankId(idDocumento);
+  };
+
   const handleClickAddBank = async () => {
     try {
       await bankService.addDoc(newBank);
       console.log("Banco Creado correctamente");
-      // Realiza cualquier otra acción después de eliminar el documento
+    } catch (error) {
+      console.error("Error al añadir el Banco:", error);
+    }
+  };
+  const handleClickEditBankName = async (idDocumento: string) => {
+    try {
+      const newBankName = newBankNames[idDocumento] || "";
+      await bankService.editDoc(idDocumento, newBankName);
+      console.log("Nombre Actualizado correctamente");
+      setNewBank("");
+      setNewBankNames((prevNames) => ({
+        ...prevNames,
+        [idDocumento]: "",
+      }));
+      setEditingBankId("");
     } catch (error) {
       console.error("Error al añadir el Banco:", error);
     }
@@ -76,15 +106,52 @@ export default function PagePage() {
                   </tr>
                   {bank.map((bank) => (
                     <tr style={{ border: "1px solid black" }} key={bank.id}>
-                      <td style={{ border: "1px solid black" }}>{bank.name}</td>
+                      <td style={{ border: "1px solid black" }}>
+                        {editingBankId === bank.id ? (
+                          <input
+                            className="form-control-2"
+                            type="text"
+                            value={newBankNames[bank.id] || ""}
+                            onChange={(event) =>
+                              handleChangeEditBank(event, bank.id)
+                            }
+                          />
+                        ) : (
+                          bank.name
+                        )}
+                      </td>
                       <td>
-                        <button className="btn btn-warning me-4">Editar</button>
-                        <button
-                          className="btn btn-danger ms-4"
-                          onClick={() => handleClickDeletBank(bank.id)}
-                        >
-                          Eliminar
-                        </button>
+                        {editingBankId === bank.id ? (
+                          <>
+                            <button
+                              className="btn btn-success me-4"
+                              onClick={() => handleClickEditBankName(bank.id)}
+                            >
+                              Guardar
+                            </button>
+                            <button
+                              className="btn btn-secondary"
+                              onClick={() => setEditingBankId("")}
+                            >
+                              Cancelar
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              className="btn btn-warning me-4"
+                              onClick={() => setEditingBankId(bank.id)}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              className="btn btn-danger ms-4"
+                              onClick={() => handleClickDeleteBank(bank.id)}
+                            >
+                              Eliminar
+                            </button>
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))}

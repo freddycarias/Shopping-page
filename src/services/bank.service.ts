@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { database } from "./firebase";
 import { Bank } from "../models/bank";
 
@@ -30,6 +30,15 @@ export const bankService = {
     try {
       const referenciaDocumento = collection(database, 'Bank');
       await addDoc(referenciaDocumento, {name: docName });
+      console.log('Documento eliminado exitosamente.');
+    } catch (error) {
+      console.error('Error al eliminar el documento:', error);
+    }
+  },
+  editDoc: async (idDocumento: string, nuevoNombre: string) => {
+    try {
+      const referenciaDocumento = doc(collection(database, 'Bank'), idDocumento);
+      await updateDoc(referenciaDocumento, {name: nuevoNombre });
       console.log('Documento eliminado exitosamente.');
     } catch (error) {
       console.error('Error al eliminar el documento:', error);
