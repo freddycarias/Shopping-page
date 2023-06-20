@@ -1,39 +1,47 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import Header from "../layout/Header/Header";
-import { Banks } from "../services/ComponentList/BankList";
-import { useState } from "react";
-
-interface Bank {
-  id: number;
-  bank: string;
-}
+import { Bank } from "../models/bank";
+import { bankService } from "../services/bank.service";
 
 export default function PagePage() {
-  
-  const [bank , setBank] = useState<Bank[]>(Banks);
-  const [newBankName, setNewBankName] = useState('');
-  const [editingIndex, setEditingIndex] = useState(-1);
+  const [bank, setBank] = useState<Bank[]>([]);
+  const [newBank, setNewBank] = useState("");
 
-  const handleEditBankName = (index:number , newName: string) => {
-    const updateBank = [...bank];
-    updateBank[index].bank = newName;
-    setBank(updateBank);
-    setEditingIndex(-1)
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const typeOfBank = await bankService.getAllBank();
+        setBank(typeOfBank);
+      } catch (error) {
+        throw new Error("Error");
+      }
+    };
+    fetchData();
+  }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBankName(e.target.value)
-  }
+  const handleClickDeletBank = async (idDocumento: string) => {
+    try {
+      await bankService.deleteDoc(idDocumento);
+      console.log("Banco eliminado correctamente");
+      setNewBank("");
+    } catch (error) {
+      console.error("Error al eliminar el banco:", error);
+    }
+  };
 
-  const handleUpdateBankName = (index: number) => {
-    handleEditBankName(index, newBankName);
-    setNewBankName('')
-  }
+  const handleChangeBankName = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewBank(event.target.value);
+  };
 
-  const handleDeleteBank = (index: number) => {
-    const updatedBank = [...bank];
-    updatedBank.splice(index, 1 )
-    setBank(updatedBank)
-  }
+  const handleClickAddBank = async () => {
+    try {
+      await bankService.addDoc(newBank);
+      console.log("Banco Creado correctamente");
+      // Realiza cualquier otra acción después de eliminar el documento
+    } catch (error) {
+      console.error("Error al añadir el Banco:", error);
+    }
+  };
 
   return (
     <>
@@ -42,54 +50,40 @@ export default function PagePage() {
         <div className="row">
           <div className="col text-center">
             <div className="row">
+              <div className="add-bank input-group mb-5">
+                <input
+                  className="form-control"
+                  type="text"
+                  value={newBank}
+                  onChange={handleChangeBankName}
+                />
+                <button
+                  className="btn btn-primary"
+                  onClick={handleClickAddBank}
+                >
+                  Crear
+                </button>
+              </div>
               <table>
                 <tbody>
                   <tr style={{ border: "1px solid black" }}>
-                    <td style={{ border: "1px solid black" , width: "200px"}}>Banco</td>
-                    <td style={{ border: "1px solid black", width: "300px" }}>Opciones</td>
+                    <td style={{ border: "1px solid black", width: "200px" }}>
+                      Banco
+                    </td>
+                    <td style={{ border: "1px solid black", width: "300px" }}>
+                      Opciones
+                    </td>
                   </tr>
-                  {bank.map((bank: Bank, index: number) => (
+                  {bank.map((bank) => (
                     <tr style={{ border: "1px solid black" }} key={bank.id}>
+                      <td style={{ border: "1px solid black" }}>{bank.name}</td>
                       <td>
-                        {index === editingIndex ? (
-                          <input
-                            type="text"
-                            value={newBankName}
-                            onChange={handleInputChange}
-                          />
-                        ) : (
-                          bank.bank
-                        )}
-                      </td>
-                      <td style={{ border: "1px solid black" }}>
-                        {index === editingIndex ? (
-                          <>
-                            <button
-                              className="btn btn-success me-2"
-                              onClick={() => handleUpdateBankName(index)}
-                            >
-                              Guardar
-                            </button>
-                            <button
-                              className="btn btn-secondary me-2"
-                              onClick={() => setEditingIndex(-1)}
-                            >
-                              Cancelar
-                            </button>
-                          </>
-                        ) : (
-                          <button
-                            className="btn btn-warning me-2"
-                            onClick={() => setEditingIndex(index)}
-                          >
-                            Editar
-                          </button>
-                        )}
+                        <button className="btn btn-warning me-4">Editar</button>
                         <button
-                          className="btn btn-danger"
-                          onClick={() => handleDeleteBank(index)}
+                          className="btn btn-danger ms-4"
+                          onClick={() => handleClickDeletBank(bank.id)}
                         >
-                          Delete
+                          Eliminar
                         </button>
                       </td>
                     </tr>
