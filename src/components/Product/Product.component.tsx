@@ -2,6 +2,8 @@ import { Product } from "../../models/product";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../../styles/ProductDetail.component.css";
+import { shoppingCartService } from "../../services/shoppingcart.service";
+import toast, { Toaster } from "react-hot-toast";
 
 type productProps = {
   product: Product;
@@ -13,6 +15,15 @@ export default function ProductCompononent({
   printDetails,
 }: productProps) {
   const navigate = useNavigate();
+  
+  const handleTransferClick = async () => {
+    try {
+      await shoppingCartService.transferDocument(product);
+      toast.success("Successfully Added to Shopping Cart");
+    } catch (error) {
+      toast.error("Error adding it")
+    }
+  };
   return (
     <>
       {product && (
@@ -74,7 +85,7 @@ export default function ProductCompononent({
                   style={{ marginRight: "10px" }}
                 >
                   <div className="add-to cart">
-                    <button className="btn btn-add-to-cart">Add to Cart</button>
+                    <button className="btn btn-add-to-cart" onClick={handleTransferClick}>Add to Cart</button>
                   </div>
                   <div className="add-to buy-now">
                     <button className="btn btn-warning" onClick={() => navigate("/buy-form")}>Buy Now</button>
@@ -111,6 +122,7 @@ export default function ProductCompononent({
           )}
         </div>
       )}
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
