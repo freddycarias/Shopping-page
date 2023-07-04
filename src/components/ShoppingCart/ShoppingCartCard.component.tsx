@@ -1,30 +1,34 @@
+import { Product } from "../../models/product";
 import CheckBoxComponent from "../CheckBox.component";
 
-type ShoppingCartCardProps = {
-  image?: string;
-  name?: string;
-  instock?: boolean;
-  price?: number;
+type productProps = {
+  product: Product;
+  handleClickDelete: any;
+  handleInputChange: any;
 };
 
-export default function ShoppingCartCardComponent({image,name,instock,price}: ShoppingCartCardProps) {
+export default function ShoppingCartCardComponent({
+  product,
+  handleInputChange,
+  handleClickDelete,
+}: productProps) {
   return (
-    <>
+    <div key={product.id}>
       <div className="mb-3 w-100">
         <div className="row g-0">
           <div className="col">
             <img
-              src={image}
+              src={product.images.path}
               className="img-fluid"
-              alt={name}
+              alt={product.images.name}
             />
           </div>
           <div className="col-md-5">
             <div className="card-body">
-              <h5 className="card-title text-center">{name}</h5>
+              <h5 className="card-title text-center">{product.name}</h5>
               <ul>
                 <li>
-                  <span>{instock}</span>
+                  <span>{product.stocked}</span>
                 </li>
                 <li>
                   <span>Eligible for FREE Shipping & FREE Returns</span>
@@ -37,20 +41,39 @@ export default function ShoppingCartCardComponent({image,name,instock,price}: Sh
                     />
                   </span>
                 </li>
+                <li>
+                  <p>Qty</p>
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="1"
+                    required
+                    defaultValue={1}
+                    style={{ width: "70px" }}
+                    onChange={(e) =>
+                      handleInputChange(product.id, e.target.value)
+                    }
+                  />
+                </li>
               </ul>
               <div className="text-center">
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleClickDelete(product.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
           <div className="col-md-3">
             <div className="card-body text-end">
-              <h5 className="card-title">${price}</h5>
+              <h5 className="card-title">${product.price}</h5>
             </div>
           </div>
         </div>
       </div>
       <hr />
-    </>
+    </div>
   );
 }
