@@ -32,7 +32,7 @@ const ProductListComponent: React.FC = () => {
           <div className="loading-spinner"></div>
         </div>
       ) : (
-        <div className="d-flex flex-wrap p-10 card-size">
+        <div className="d-flex flex-wrap justify-content-center p-10 card-size">
           {product.map((product) => (
             <ProductComponent product={product} printDetails={false} key={product.id} />
           ))}
