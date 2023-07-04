@@ -1,7 +1,51 @@
+import { useEffect, useState } from "react";
 import CheckBoxComponent from "../CheckBox.component";
 import ShoppingCartCardComponent from "./ShoppingCartCard.component";
+import { shoppingCartService } from "../../services/shoppingcart.service";
+import toast, { Toaster } from "react-hot-toast";
+import { Product } from "../../models/product";
 
 export default function ShoppingCartComponent() {
+  const [product, setProduct] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const unsubscribe = shoppingCartService.getAllProducts((data: any) => {
+     
+      setProduct(data);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const handleClickDelete = async (idDocumento: string) => {
+    try {
+      await shoppingCartService.deleteDoc(idDocumento);
+      setProduct((prevProduct) =>
+        prevProduct.filter((product) => product.id !== idDocumento)
+      );
+      toast.success("Successfully deleted");
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+    }
+  };
+
+  const handleInputChange = (id: any, value: any) => {
+    const qty = parseInt(value, 10);
+    if (qty <= 0) {
+      handleClickDelete(id);
+    }
+  };
+
+  const calculateTotalPrice = (): number => {
+    return product.reduce((total, item) => total + item.price, 0);
+  };
+
+  const calculateTotalItems = (): number => {
+    return product.reduce((total, item) => total + item.quantity, 0);
+  };
+
+
   return (
     <div className="container" style={{ marginBottom: "230px" }}>
       <div className="row">
@@ -15,11 +59,14 @@ export default function ShoppingCartComponent() {
               </div>
               <hr />
               <div className="row">
-                <ShoppingCartCardComponent />
+                {product.map((product) => (
+                  <ShoppingCartCardComponent product={product}  handleClickDelete={handleClickDelete} handleInputChange={handleInputChange}  key={product.id}/>
+                ))}
               </div>
               <div className="row">
                 <div className="col text-end">
-                  Subtotal (X item): <strong>X</strong>
+                Subtotal (<strong>{calculateTotalItems()}</strong> items): 
+                <strong>${calculateTotalPrice()}</strong>
                 </div>
               </div>
             </div>
@@ -29,7 +76,8 @@ export default function ShoppingCartComponent() {
           <div className="card w-100 mb-3">
             <div className="card-body">
               <p className="card-title">
-                Subtotal (X item): <strong>X</strong>
+                Subtotal ({calculateTotalItems()} item): 
+                <strong>${calculateTotalPrice()}</strong>
               </p>
               <div className="card-text">
                 <div className="shopping-cart-checkbox">
@@ -52,6 +100,7 @@ export default function ShoppingCartComponent() {
         gift card or promotional code? We'll ask you to enter your claim code
         when it's time to pay.
       </span>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

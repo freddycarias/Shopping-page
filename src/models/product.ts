@@ -11,4 +11,5 @@ export interface Product {
   price: number;
   stocked: boolean;
   productType: string;
+  quantity: number;
 }
